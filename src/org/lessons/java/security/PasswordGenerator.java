@@ -29,7 +29,7 @@ public class PasswordGenerator {
             anno = in.nextInt();
         }
         //Data di nascita: mese
-        System.out.println("Che mese sei nato?");
+        System.out.println("Che mese sei nato?(Gennaio = 1, Febbraio = 2, ..., Dicembre = 12)");
         int mese = in.nextInt();
         while(mese <=0 || mese > 12 ){
             System.out.println("Mese inesistente! Inserire mese valido:");
