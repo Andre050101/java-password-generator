@@ -1,32 +1,46 @@
 package org.lessons.java.security;
+
+//Import
 import java.util.Scanner;
+import java.time.Year;
+import org.lessons.java.security.utils.DateUtils;
 
 public class PasswordGenerator {
     public static void main(String[] args) {
+        //Intro programma con input
         Scanner in = new Scanner(System.in);
         System.out.println("Benvenuto nel password generator, ti chiederò alcuni dati al fine di generare la tua password:");
+        //Nome
         System.out.println("Inserire nome:");
         String nome = in.nextLine();
+        //Cognome
         System.out.println("Inserire Cognome:");
         String cognome = in.nextLine();
+        //Colore
         System.out.println("Okay "+nome+" "+cognome+", qual è il tuo colore preferito?");
         String colore = in.nextLine();
-        System.out.println("Perfetto! Procediamo con la tua data di nascita: inserire il giorno di nascita:");
-        int giorno = in.nextInt();
-        while(giorno <= 0 || giorno > 31){
-            System.out.println("Il numero digitato non è valido, per favore inserire numero valido:");
-            giorno = in.nextInt();
+
+        //Data di nascita: anno
+        int annoAttuale = Year.now().getValue();
+        System.out.println("Perfetto! Procediamo con la tua data di nascita, di che anno sei?");
+        int anno = in.nextInt();
+        while(anno <= 0 || anno > annoAttuale){
+            System.out.println("L'anno digitato non è valido, per favore inserire numero valido:");
+            anno = in.nextInt();
         }
+        //Data di nascita: mese
         System.out.println("Che mese sei nato?");
         int mese = in.nextInt();
         while(mese <=0 || mese > 12 ){
             System.out.println("Mese inesistente! Inserire mese valido:");
             mese = in.nextInt();
         }
-        System.out.println("Di che anno sei?");
-        int anno = in.nextInt();
-        while(anno< 1900 || anno > 2025){
-            System.out.println("Anno non valido, reinserirlo:");
+        //Data di nascita: giorno
+        int maxGiorno = DateUtils.giorniNelMese(mese, anno);
+        System.out.println("Okay, concludiamo con il giorno di nascita:");
+        int giorno = in.nextInt();
+        while(giorno <= 0 || giorno > maxGiorno ){
+            System.out.println("Giorno non valido, reinserirlo:");
             anno = in.nextInt();
         }
         char divisore = '-';
