@@ -41,7 +41,7 @@ public class PasswordGenerator {
         int giorno = in.nextInt();
         while(giorno <= 0 || giorno > maxGiorno ){
             System.out.println("Giorno non valido, reinserirlo:");
-            anno = in.nextInt();
+            giorno = in.nextInt();
         }
         char divisore = '-';
         int somma = giorno+mese+anno;
